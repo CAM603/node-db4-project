@@ -147,3 +147,27 @@ In other words, don’t create a seed with a foreign key, until that reference r
 
 - Add data
 - Seed data: `knex seed:run`
+
+##  Create a model (or database access file) in recipes folder called recipes-model.js
+
+- Add: 
+const db = require('../data/dbConfig');
+
+module.exports = {
+  
+}
+
+Add the following methods:
+- get()
+- getShoppingList(recipe_id)
+- getInstructions(recipe_id)
+- getById(id)
+- add(recipe)
+- update(changes, id)
+- remove(id)
+
+- in recipes-router replace:
+
+const db = require('../data/dbConfig');
+with
+const Recipes = require('./recipes-model');
