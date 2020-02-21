@@ -10,6 +10,6 @@ exports.seed = function(knex) {
     {recipe_id: '3', ingredient_id: '7', amount: '1'},
     {recipe_id: '3', ingredient_id: '8', amount: '1/4 cup'},
     {recipe_id: '3', ingredient_id: '9', amount: '1/3 cup'},
-    {recipe_id: '3', ingredient_id: '10', amount: '1/3 cup'},
+    {recipe_id: '3', ingredient_id: '10', amount: '1/3 cup'}
   ]);
 };

@@ -48,3 +48,9 @@ function getIngredients(recipe_id) {
         .join('ingredients', 'recipes.recipe_id', 'ingredients.id')
         .where({recipe_id: recipe_id})
 }
+/*
+SELECT recipes.recipe_name, ingredients.ingredient_name, recipe_ingredients.amount  FROM recipe_ingredients
+JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.id
+JOIN recipes ON recipe_ingredients.recipe_id = recipes.id
+WHERE recipe_ingredients.ingredient_id = 3
+*/
