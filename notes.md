@@ -117,3 +117,26 @@ const db = require('../data/dbConfig');
 ## In new migration file
 - Create table
 - Add migration functions: `knex migrate:latest`
+
+## Add seeds
+- Run `knex seed:make 00-cleanup` and `npm install knex-cleaner`
+- Inside the cleanup seed, use the following code:
+
+    const cleaner = require('knex-cleaner');
+
+    exports.seed = function(knex) {
+    return cleaner.clean(knex, {
+        mode: 'truncate', // resets ids
+        ignoreTables: ['knex_migrations', 'knex_migrations_lock'], // don't empty migration tables
+    });
+    };
+
+- This removes all tables (excluding the two tables that track migrations) in the correct order before any seed files run.
+
+create seeds **in the same order you created our tables** 
+In other words, don’t create a seed with a foreign key, until that reference record exists
+
+- `knex seed:make 01-recipes`
+- `knex seed:make 02-ingredients`
+- `knex seed:make 03-steps`
+- `knex seed:make 04-recipe_ingredients`
