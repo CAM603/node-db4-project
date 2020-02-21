@@ -91,3 +91,29 @@ module.exports = router;
 const recipesRouter = require('./recipes/recipes-router');
 
 server.use('/api/recipes', recipesRouter);
+
+## Add dbConfig.js in data folder with
+const knex = require('knex');
+
+const configOptions = require('../knexfile').development;
+
+module.exports = knex(configOptions)
+
+## In recipes-router.js add:
+const db = require('../data/dbConfig');
+
+## Add the following code to your knexfile in development:
+*needed when using foreign keys*
+  pool: {
+    afterCreate: (conn, done) => {
+      // runs after a connection is made to the sqlite engine
+      conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+    },
+  },
+
+## Create a migration
+- `knex migrate:make create_recipes_table`
+
+## In new migration file
+- Create table
+- Add migration functions: `knex migrate:latest`
