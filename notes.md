@@ -137,6 +137,13 @@ create seeds **in the same order you created our tables**
 In other words, don’t create a seed with a foreign key, until that reference record exists
 
 - `knex seed:make 01-recipes`
+    - Change all `table_name` to `your table name duh`
 - `knex seed:make 02-ingredients`
+    - Change all `table_name` to `your table name duh`
 - `knex seed:make 03-steps`
+    - Change all `table_name` to `your table name duh`
 - `knex seed:make 04-recipe_ingredients`
+    - Change all `table_name` to `your table name duh`
+
+- Add data
+- Seed data: `knex seed:run`
